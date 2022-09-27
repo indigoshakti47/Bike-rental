@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+
+import { Store, Persistor } from "./store";
+
+import "./global.css"
+import "assets/plugins/nucleo/css/nucleo.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "assets/scss/argon-dashboard-react.scss";
+
+import AdminLayout from "layouts/Admin.js";
+import AuthLayout from "layouts/Auth.js";
+import DeliveryToast from "components/SharedComponents/DeliveryToast";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={Store}>
+      <PersistGate loading={null} persistor={Persistor}>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/admin" render={props => <AdminLayout {...props} />} />
+            <Route path="/auth" render={props => <AuthLayout {...props} />} />
+            <Redirect from="/" to="/admin/restaurants" />
+          </Switch>
+        </BrowserRouter>
+        <DeliveryToast text="Some text" status="success" />
+      </PersistGate>
+    </Provider>
   );
 }
 
