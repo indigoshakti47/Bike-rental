@@ -3,7 +3,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import classNames from 'classnames';
 import { Tooltip } from 'reactstrap';
 
-import { statuses } from 'data/reservationStatus';
+import { statuses } from '../../data/reservationStatus';
 
 export default function StatusItem({ status, reservationId }) {
   const [statusObject, setStatusObject] = useState({});

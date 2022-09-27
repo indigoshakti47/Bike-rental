@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Bike from "../models/Bikes";
+import Bike from "../models/Bikes.js";
 
 export const createBike = async (req, res) => {
   const { model, color, rating, imgURL, location, restaurant } = req.body;

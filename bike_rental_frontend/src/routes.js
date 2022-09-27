@@ -1,7 +1,11 @@
 import Register from "./views/pages/Register.js";
-import Login from "views/pages/Login.js";
-import Reservations from "views/pages/Reservations";
-import BlockedUsers from "views/pages/BlockedUsers";
+import Login from "./views/pages/Login.js";
+import Reservations from "./views/pages/Reservations";
+// import BlockedUsers from "./views/pages/BlockedUsers";
+import Bikes from "./views/pages/Bikes";
+import BikeDetail from "./views/pages/BikeDetail";
+
+
 
 export const AuthRoutes = [
   {
@@ -26,13 +30,7 @@ export const manager = [
     name: 'Reservations',
     icon: 'ni ni-cart',
     component: Reservations,
-  },
-  {
-    path: '/blocked/',
-    name: 'Blocked Users',
-    icon: 'fas fa-user-lock',
-    component: BlockedUsers,
-  },
+  }
 ];
 
 export const client = [

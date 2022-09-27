@@ -6,13 +6,13 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Store, Persistor } from "./store";
 
 import "./global.css"
-import "assets/plugins/nucleo/css/nucleo.css";
+import "./assets/plugins/nucleo/css/nucleo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "assets/scss/argon-dashboard-react.scss";
+import "./assets/scss/argon-dashboard-react.scss";
 
-import AdminLayout from "layouts/Admin.js";
-import AuthLayout from "layouts/Auth.js";
-import DeliveryToast from "components/SharedComponents/DeliveryToast";
+import AdminLayout from "./layouts/Admin.js";
+import AuthLayout from "./layouts/Auth.js";
+import DeliveryToast from "./components/SharedComponents/DeliveryToast";
 
 
 function App() {

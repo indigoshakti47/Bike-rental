@@ -1,8 +1,8 @@
-import User from "../models/User";
-import Role from "../models/Role";
+import User from "../models/User.js";
+import Role from "../models/Role.js";
 
 import jwt from "jsonwebtoken";
-import config from "../config";
+import config from "../config.js";
 
 const mapUser = async (user) => {
   const roles = await Role.find({ _id: { $in: user.roles } });

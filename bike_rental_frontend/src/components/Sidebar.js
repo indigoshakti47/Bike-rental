@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { NavLink as NavLinkRRD } from "react-router-dom";
-import Logo from "../../assets/img/brand/fastly.png";
+import Logo from "../../src/assets/img/brand/fastly.png";
 import {
   Collapse,
   NavbarBrand,

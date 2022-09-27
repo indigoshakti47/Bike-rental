@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Switch, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux"
 import { Container } from "reactstrap";
-import AdminNavbar from "components/Navbars/AdminNavbar.js";
-import Sidebar from "components/Sidebar/Sidebar.js";
-import useScrollTop from "hooks/useScrollTop";
+import AdminNavbar from "../components/Navbars/AdminNavbar.js";
+import Sidebar from "../components/Sidebar";
+import useScrollTop from "../hooks/useScrollTop";
 import * as helpers from './helpers';
-import { restaurant, client } from "../routes";
+import { manager, client } from "../routes";
 
 function Admin(props) {
   const [routes, setRoutes] = useState([]);
@@ -15,7 +15,7 @@ function Admin(props) {
 
   useEffect(() => {
     if (auth.user?.roles && auth.user?.roles[0] === 'manager') {
-      setRoutes(restaurant);
+      setRoutes(manager);
     } else {
       setRoutes(client);
     }
@@ -39,7 +39,7 @@ function Admin(props) {
         basePath="/admin"
         logo={{
           innerLink: "/admin/index",
-          imgSrc: require("assets/img/brand/logistico.png"),
+          imgSrc: require("../assets/img/brand/logistico.png"),
           imgAlt: "..."
         }}
       />

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signIn as loginAction } from "../../actions/auth";
-import InputGroup from "../../components/Forms/InputGroup";
+import InputGroup from "../../components/InputGroup";
 import {
   Button,
   Card,
@@ -10,7 +10,7 @@ import {
   Input,
   Col
 } from "reactstrap";
-import { useAlert } from "hooks/useAlert";
+import { useAlert } from "../../hooks/useAlert";
 
 function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });

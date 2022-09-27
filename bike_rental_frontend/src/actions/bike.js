@@ -27,6 +27,6 @@ export const updateBike = (bikeId, updatedBike) => async (dispatch) => {
 }
 
 export const deleteBike = (bikeId, shopId) => async (dispatch) => {
-  await BikeService.deleteMeal(mealId);
+  await BikeService.deleteMeal(bikeId);
   dispatch(listBikes(shopId));
 }

@@ -11,8 +11,8 @@ import ConfirmationDialog from "../../components/SharedComponents/ConfirmationDi
 import ReservationsService from '../../services/ReservationsService';
 import UserService from '../../services/UserService';
 
-import { statuses } from 'data/reservationStatus';
-import { useAlert } from 'hooks/useAlert';
+import { statuses } from '../../data/reservationStatus';
+import { useAlert } from '../../hooks/useAlert';
 
 export default function ReservationsTable() {
   const [filters, setFilters] = useState({ status: 'placed' });

@@ -34,7 +34,7 @@ export default function ReservationCard({ reservation, onStatusChange, onBlockUs
   const [bikes, setBikes] = useState([]);
 
   const statusChanges =
-    role === "manager" ? restaurantStatesChanges : clientStatesChanges;
+    role === "manager" ? clientStatesChanges : clientStatesChanges;
 
   const nextStatus = statusChanges[reservation.status];
 

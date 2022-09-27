@@ -1,5 +1,7 @@
-import { Schema, model } from "mongoose";
 import bcrypt from "bcryptjs";
+import pkg from 'mongoose';
+const { Schema, model } = pkg;
+
 
 const userSchema = new Schema(
   {

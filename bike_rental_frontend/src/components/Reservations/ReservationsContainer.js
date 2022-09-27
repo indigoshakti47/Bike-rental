@@ -3,7 +3,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { Container } from "reactstrap";
 
-import Header from "../Headers/Header.js";
+import Header from "../Header.js";
 
 export default function ReservationsContainer({ children }) {
   const role = useSelector(state => state.auth.role);

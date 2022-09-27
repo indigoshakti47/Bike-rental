@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signUp as registerAction } from "../../actions/auth";
-import { useAlert } from "hooks/useAlert";
-import InputGroup from "../../components/Forms/InputGroup";
+import { useAlert } from "../../hooks/useAlert";
+import InputGroup from "../../components/InputGroup";
 import {
   Button,
   Card,

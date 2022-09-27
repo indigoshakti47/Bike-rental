@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 import { connect } from "react-redux"
 import Logo from "../assets/img/brand/logistico.png"
-import AuthNavbar from "components/Navbars/AuthNavbar.js";
+import AuthNavbar from "../components/Navbars/AuthNavbar.js";
 import { AuthRoutes as routes } from "../routes";
 
 class Auth extends React.Component {

@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
-import Meal from "../models/Meal";
-import Order from "../models/Order";
+// import Order from "../models/Order";
 
 export const isValidOrder = async (req, res, next) => {
   try {
@@ -19,26 +18,7 @@ export const isValidOrder = async (req, res, next) => {
     if (!resturantObject) {
       return res.status(404).json({ message: "Restaurant doesn't exist" });
     }
-    const mealQuery = await Meal.find({ '_id': { $in: bikes }, restaurant });
     
-    let hasNotFound = false;
-
-    const mealObjects = bikes.map((mealId) => {
-      const found = mealQuery.find(({_id}) => _id.toString() === mealId);
-
-      if (!found) {
-        hasNotFound = true;
-      }
-
-      return found;
-    });
-    
-    if (hasNotFound) {
-      return res.status(400).json({ message: "All the bikes need to be from the same restaurant" });
-    }
-
-    req.body.totalAmount = mealObjects.reduce((acc, meal) => acc + meal.price, 0);
-
     next();
   } catch (error) {
     if (error.kind === 'ObjectId') {
@@ -54,21 +34,6 @@ export const statusGuard = async (req, res, next) => {
     const { status } = req.body;
     const { orderId } = req.params;
 
-    const order = await Order.findById(orderId);
-
-    if (!order) {
-      return res.status(404).json({ message: "Order not found" });
-    }
-
-    if (isUser && order.user.toString() !== userId.toString()) {
-      return res.status(403).json({ message: "You can't modify this order" });
-    }
-
-    if (isRestaurant && !restaurants.includes(order.restaurant)) {
-      return res.status(403).json({ message: "You can't modify this order" });
-    }
-
-    req.order = order;
 
     switch (status) {
       case "reserved":

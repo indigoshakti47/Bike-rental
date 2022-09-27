@@ -1,6 +1,5 @@
-import Role from "../models/Role";
-import User from "../models/User";
-import bcrypt from "bcryptjs";
+import Role from "../models/Role.js";
+import User from "../models/User.js";
 
 export const createRoles = async () => {
   try {

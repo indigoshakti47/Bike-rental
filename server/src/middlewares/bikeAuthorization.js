@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Bike from "../models/Bike";
+import Bike from "../models/Bike.js";
 
 export const canCreateBike = async (req, res, next) => {
   try {
