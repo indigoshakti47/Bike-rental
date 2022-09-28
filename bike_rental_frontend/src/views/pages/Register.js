@@ -42,6 +42,7 @@ function Register() {
         roles: [formData.roles],
       }))
     } catch (error) {
+      console.log(error)
       alert('Something went wrong! Please try again', 'error');
     }
   };
@@ -67,8 +68,8 @@ function Register() {
               </InputGroup>
               <InputGroup icon="ni ni-circle-08">
                 <Input placeholder="User type" type="select" required onChange={handleChange('roles')}>
-                  <option value="user">Client</option>
-                  <option value="restaurant">Restaurant Owner</option>
+                  <option value="user">User</option>
+                  <option value="manager">Manager</option>
                 </Input>
               </InputGroup>
               <InputGroup icon="ni ni-lock-circle-open">

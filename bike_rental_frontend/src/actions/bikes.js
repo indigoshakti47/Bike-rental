@@ -15,7 +15,7 @@ export const listBikes = (shopId) => async (dispatch) => {
 
 export const createBike = (newBike) => async (dispatch) => {
   const { shop } = newBike;
-  await BikeService.createMeal(newBike);
+  await BikeService.createBike(newBike);
   dispatch(listBikes(shop));
 }
 
@@ -30,3 +30,8 @@ export const deleteBike = (bikeId, shopId) => async (dispatch) => {
   await BikeService.deleteMeal(bikeId);
   dispatch(listBikes(shopId));
 }
+export const getBikeById = (bikeId) => async (dispatch) => {
+  const bike = await BikeService.getBikeById(bikeId);
+  dispatch(getBikeById(bike));
+}
+

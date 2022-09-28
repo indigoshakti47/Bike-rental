@@ -1,9 +1,8 @@
 import Register from "./views/pages/Register.js";
 import Login from "./views/pages/Login.js";
 import Reservations from "./views/pages/Reservations";
-// import BlockedUsers from "./views/pages/BlockedUsers";
-import Bikes from "./views/pages/Bikes";
-import BikeDetail from "./views/pages/BikeDetail";
+import BikeDetail from "./views/pages/manager/BikeDetail";
+import Bikes from "./views/pages/manager/Bikes";
 
 
 
@@ -25,21 +24,29 @@ export const AuthRoutes = [
 ];
 
 export const manager = [
-  {
-    path: '/reservations',
-    name: 'Reservations',
-    icon: 'ni ni-cart',
-    component: Reservations,
-  }
-];
-
-export const client = [
+ 
   {
     path: '/bikes',
     name: 'Bikes',
     icon: 'fas fa-utensils',
     component: Bikes,
   },
+  {
+    path: '/bike/:bikeId',
+    name: 'Bike Detail',
+    component: BikeDetail,
+  },
+  
+  {
+    path: '/reservations',
+    name: 'Reservations',
+    icon: 'ni ni-cart',
+    component: Reservations,
+  },
+];
+
+export const client = [
+
   {
     path: '/bike/:bikeId',
     name: 'Bike Details',

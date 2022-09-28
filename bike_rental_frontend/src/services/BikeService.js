@@ -5,6 +5,10 @@ class BikeService {
     const { data } = await get('/bike', { params });
     return data;
   }
+  static async getBikeById(bikeId) {
+    const { data } = await get(`/bike/${bikeId}`);
+    return data;
+  }
 
   static async createBike(newBike) {
     const config = {

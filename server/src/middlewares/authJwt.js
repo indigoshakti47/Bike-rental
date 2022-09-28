@@ -53,3 +53,19 @@ export const isUser = async (req, res, next) => {
     return res.status(500).send({ message: error });
   }
 };
+
+export const isManager = async (req, res, next) => {
+  try {
+console.log(req.user.isManager)
+    if (req.user.isManager) {
+      return next();
+    }
+
+    return res.status(403).json({ message: "User Role Invalid!" });
+  } catch (error) {
+    console.log(error)
+    return res.status(500).send({ message: error });
+  }
+};
+
+

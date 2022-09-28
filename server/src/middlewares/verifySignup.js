@@ -3,7 +3,6 @@ import { ROLES } from "../models/Role.js";
 
 const checkDuplicateEmail = async (req, res, next) => {
   try {
-    
     const email = await User.findOne({ email: req.body.email });
     if (email)
       return res.status(400).json({ message: "The email already exists" });
@@ -23,7 +22,6 @@ const checkRolesExisted = (req, res, next) => {
       }
     }
   }
-
   next();
 };
 

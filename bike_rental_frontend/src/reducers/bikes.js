@@ -1,4 +1,4 @@
-import { SET_BIKES } from '../actions/bike';
+import { SET_BIKES } from '../actions/bikes';
 
 const initialState = {
   bikes: [],

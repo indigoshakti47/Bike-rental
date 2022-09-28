@@ -7,6 +7,8 @@ import helmet from "helmet";
 
 import authRoutes from "./routes/auth.routes.js";
 import usersRoutes from "./routes/users.routes.js";
+import bikesRoutes from "./routes/bike.routes.js";
+
   import { createRoles } from "./libs/initialSetup.js";
 const app = express();
 createRoles();
@@ -35,5 +37,6 @@ app.get("/", (req, res) => {
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/user", usersRoutes);
+app.use("/api/bike", bikesRoutes);
 
 export default app;
