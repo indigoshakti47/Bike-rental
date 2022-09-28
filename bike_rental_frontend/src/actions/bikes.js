@@ -1,9 +1,16 @@
 import BikeService from '../services/BikeService';
 
 export const SET_BIKES = 'SET_BIKES';
+export const SHOW_BIKE = 'SHOW_BIKE';
 
 const setBikes = (data) => ({
   type: SET_BIKES,
+  payload: data,
+});
+
+
+const getBike = (data) => ({
+  type: SHOW_BIKE,
   payload: data,
 });
 
@@ -27,11 +34,12 @@ export const updateBike = (bikeId, updatedBike) => async (dispatch) => {
 }
 
 export const deleteBike = (bikeId, shopId) => async (dispatch) => {
-  await BikeService.deleteMeal(bikeId);
+  await BikeService.deleteBike(bikeId);
   dispatch(listBikes(shopId));
 }
 export const getBikeById = (bikeId) => async (dispatch) => {
   const bike = await BikeService.getBikeById(bikeId);
-  dispatch(getBikeById(bike));
+  console.log(bike)
+  dispatch(getBike(bike));
 }
 

@@ -17,17 +17,20 @@ import ConfirmationDialog from "../../../components/SharedComponents/Confirmatio
 import BikeList from "../../../components/Bikes/List";
 import BikeFormModal from "../../../components/Bikes/FormModal";
 
-
+import ReservationsContainer from "../../../components/Reservations/ReservationsContainer";
+import ReservationsTable from "../../../components/Reservations/ReservationsTable";
 export default function BikeDetail() {
   const [editingMeal, setEditingMeal] = useState(false);
   const [deleteId, setDeleteId] = useState(false);
   const alert = useAlert();
   const dispatch = useDispatch();
   const { bikeId } = useParams();
-  const { bike } = useSelector((state) => state.bikes);
-
+  const { bike } = useSelector((state) => state.bikes)
+console.log(bike)
   const fetchData = useCallback(async () => {
     try {
+      console.log('Something went wrong', 'error')
+
       await dispatch(getBikeById(bikeId));
     } catch (error) {
       alert('Something went wrong', 'error')
@@ -38,9 +41,9 @@ export default function BikeDetail() {
     fetchData();
   }, [fetchData]);
 
-console.log(bike)
   return (
-    <>
-    </>
+    <ReservationsContainer>
+      <ReservationsTable />
+    </ReservationsContainer>
   )
 }

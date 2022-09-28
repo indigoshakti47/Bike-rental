@@ -23,7 +23,11 @@ const bikeSchema = new Schema(
       type: String,
       required: true
     },
-    imgURL: String
+    imgURL:
+    {
+      data: Buffer,
+      contentType: String
+    }
   },
   {
     timestamps: true,

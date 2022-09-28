@@ -3,8 +3,6 @@ import Bike from "../models/Bike.js";
 
 export const createBike = async (req, res) => {
   const { model, color, rating, imgURL, location,status, bike } = req.body;
-  console.log('bike----------------------')
-
   try {
     const newBike = new Bike({
       model,
@@ -15,11 +13,7 @@ export const createBike = async (req, res) => {
       status,
       bike,
     });
-    console.log(newBike)
-
     const bikeSaved = await newBike.save();    
-    console.log('bike----------------------')
-
     res.status(201).json(bikeSaved);
   } catch (error) {
     console.log(error);
@@ -28,29 +22,25 @@ export const createBike = async (req, res) => {
 };
 
 export const getBikes = async (req, res) => {
-
   if (req.query.bike && !mongoose.Types.ObjectId.isValid(req.query.bike)){
-    console.log('bike----------------------')
-
     res.status(400).json({ message: "Invalid manager Id" });
   }
-
   const bikes = await Bike.find(req.query || {});
-  console.log(bikes);
-
   return res.json(bikes);
 };
 
 export const updateBikeById = async (req, res) => {
   try {
-    const { bikesId } = req.params;
+    const { bikeId } = req.params;
     
     const updatedBikes = await Bike.findByIdAndUpdate(
-      bikesId,
+      bikeId,
       req.body,
       {
         new: true,
-      }
+        useFindAndModify: true
+      },
+      
     );
     res.status(200).json(updatedBikes);
   } catch (error) {
@@ -71,7 +61,7 @@ export const getBikeById = async(req, res) => {
 
 
 export const deleteBikeById = async (req, res) => {
-  const { bikesId } = req.params;
-  await Bike.findByIdAndDelete(bikesId);
+  const { bikeId } = req.params;
+  await Bike.findByIdAndDelete(bikeId);
   res.status(204).json();
 };

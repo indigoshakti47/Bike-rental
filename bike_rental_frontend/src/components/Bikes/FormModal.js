@@ -9,7 +9,7 @@ const base = {
     color: '',
     location: '',
     rating: 0,
-    status: true,
+    status: true
 };
 
 export default function FormModal({ isOpen, onClose, onConfirm, editValues }) {
@@ -91,7 +91,7 @@ export default function FormModal({ isOpen, onClose, onConfirm, editValues }) {
                         />
                         <Label
                             check
-                            
+
                             for="exampleCheckbox"
                         >
                             availability
