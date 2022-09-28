@@ -23,7 +23,7 @@ function App() {
           <Switch>
             <Route path="/admin" render={props => <AdminLayout {...props} />} />
             <Route path="/auth" render={props => <AuthLayout {...props} />} />
-            <Redirect from="/" to="/admin/restaurants" />
+            <Redirect from="/" to="/admin/bikes" />
           </Switch>
         </BrowserRouter>
         <DeliveryToast text="Some text" status="success" />

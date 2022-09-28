@@ -50,7 +50,7 @@ function Admin(props) {
         />
         <Switch>
           {helpers.getRoutes(routes, '/admin')}
-          <Redirect from="*" to="/admin/restaurants" />
+          <Redirect from="*" to="/admin/bikes" />
         </Switch>
         <Container fluid>
         </Container>

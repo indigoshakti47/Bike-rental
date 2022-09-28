@@ -1,6 +1,5 @@
 import Register from "./views/pages/Register.js";
 import Login from "./views/pages/Login.js";
-import Reservations from "./views/pages/Reservations";
 import BikeDetail from "./views/pages/manager/BikeDetail";
 import Bikes from "./views/pages/manager/Bikes";
 
@@ -37,12 +36,6 @@ export const manager = [
     component: BikeDetail,
   },
   
-  {
-    path: '/reservations',
-    name: 'Reservations',
-    icon: 'ni ni-cart',
-    component: Reservations,
-  },
 ];
 
 export const client = [
@@ -51,11 +44,5 @@ export const client = [
     path: '/bike/:bikeId',
     name: 'Bike Details',
     component: BikeDetail,
-  },
-  {
-    path: '/reservations',
-    name: 'Reservations',
-    icon: 'ni ni-cart',
-    component: Reservations,
-  },
+  }
 ];
