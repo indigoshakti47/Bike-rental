@@ -11,7 +11,7 @@ import ConfirmationDialog from "../../components/SharedComponents/ConfirmationDi
 import ReservationsService from '../../services/ReservationsService';
 import UserService from '../../services/UserService';
 
-import { statuses } from '../../data/reservationStatus';
+import { statuses } from '../../data/bikeStatus';
 import { useAlert } from '../../hooks/useAlert';
 
 export default function ReservationsTable() {

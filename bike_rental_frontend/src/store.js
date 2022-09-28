@@ -14,7 +14,7 @@ const persistConfig = {
 
 const initialState = {
   auth: {},
-  bike: {},
+  bikes: {},
   alerts: {},
 };
 

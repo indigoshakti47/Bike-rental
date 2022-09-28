@@ -1,6 +1,6 @@
 export const statuses = [
-  { text: 'Received', value: 'reserved', color: 'green', icon: 'fas fa-grin-hearts' },
-  { text: 'Canceled', value: 'canceled', color: 'red', icon: 'fas fa-heart-broken' },
+  { text: 'Available', value: 'true', color: 'green', icon: 'fas fa-grin-hearts' },
+  { text: 'Not Available', value: 'false', color: 'red', icon: 'fas fa-heart-broken' },
 ];
 
 export const clientStatesChanges = {

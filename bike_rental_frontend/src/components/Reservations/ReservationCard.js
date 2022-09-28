@@ -10,7 +10,7 @@ import { Card, CardBody, CardHeader, CardFooter, Button } from "reactstrap";
 import {
   clientStatesChanges,
   restaurantStatesChanges,
-} from "../../data/reservationStatus";
+} from "../../data/bikeStatus";
 
 function groupBikes(bikes) {
   const res = {};
