@@ -51,8 +51,7 @@ export const updateBikeById = async (req, res) => {
 export const getBikeById = async(req, res) => {
   try {
     const { bikeId } = req.params;
-    console.log(bikeId)
-    const bike = await Bike.findById('6333af345ccd9ea47a525b2b');
+    const bike = await Bike.findById(bikeId);
     res.status(200).json(bike);
   } catch (error) {
     res.status(500).json(error);

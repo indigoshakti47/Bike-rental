@@ -14,8 +14,9 @@ const persistConfig = {
 
 const initialState = {
   auth: {},
-  bikes: {},
+  bikes: [],
   alerts: {},
+  users: []
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

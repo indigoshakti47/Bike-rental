@@ -1,18 +1,30 @@
-import { post, get } from '../api';
+import { post, get, patch, del } from '../api';
 
 class UserService {
-  static async blockUser(userId) {
-    const { data } = await post(`/user/${userId}/block`);
+  static async getUsers() {
+    const { data } = await get('/user');
+    return data;
+  }
+  static async createUser(newUser) {
+    const config = {
+      data: newUser
+    };
+    const { data } = await post('/user', config);
     return data;
   }
 
-  static async unblockUser(userId) {
-    const { data } = await post(`/user/${userId}/unblock`);
+  static async updateUser(userId, updatedUser) {
+    const config = {
+      data: updatedUser,
+    };
+
+    const { data } = await patch(`/user/${userId}`, config);
+
     return data;
   }
 
-  static async getById(userId) {
-    const { data } = await get(`/user/${userId}`);
+  static async deleteUser(userId) {
+    const { data } = await del(`/user/${userId}`);
     return data;
   }
 }

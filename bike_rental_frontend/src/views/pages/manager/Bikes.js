@@ -23,7 +23,6 @@ const Bikes = () => {
   const [editingBike, setEditingBike] = useState(false);
   const { bikes } = useSelector((state) => state.bikes);
 
-  const role = useSelector((state) => state.auth.role);
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -65,7 +64,6 @@ const Bikes = () => {
 
   const handleEdit = (bike) => {
     setEditingBike(bike);
-    alert('The Bike was edited successfully! ');
   };
 
   return (

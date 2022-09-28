@@ -2,6 +2,8 @@ import Register from "./views/pages/Register.js";
 import Login from "./views/pages/Login.js";
 import BikeDetail from "./views/pages/manager/BikeDetail";
 import Bikes from "./views/pages/manager/Bikes";
+import Users from "./views/pages/manager/Users";
+
 
 
 
@@ -27,13 +29,19 @@ export const manager = [
   {
     path: '/bikes',
     name: 'Bikes',
-    icon: 'fas fa-utensils',
+    icon: 'fas fa-motorcycle',
     component: Bikes,
   },
   {
     path: '/bike/:bikeId',
     name: 'Bike Detail',
     component: BikeDetail,
+  },
+  {
+    path: '/users',
+    name: 'Users',
+    icon: 'fas fa-users',
+    component: Users,
   },
   
 ];

@@ -15,31 +15,27 @@ const getBike = (data) => ({
 });
 
 
-export const listBikes = (shopId) => async (dispatch) => {
-  const bikes = await BikeService.getBikes({shop: shopId});
+export const listBikes = () => async (dispatch) => {
+  const bikes = await BikeService.getBikes();
   dispatch(setBikes(bikes));
 }
 
 export const createBike = (newBike) => async (dispatch) => {
-  const { shop } = newBike;
   await BikeService.createBike(newBike);
-  dispatch(listBikes(shop));
+  dispatch(listBikes());
 }
 
 export const updateBike = (bikeId, updatedBike) => async (dispatch) => {
-  const { shop } = updatedBike;
-  delete updatedBike.shop;
   await BikeService.updateBike(bikeId, updatedBike);
-  dispatch(listBikes(shop));
+  dispatch(listBikes());
 }
 
-export const deleteBike = (bikeId, shopId) => async (dispatch) => {
+export const deleteBike = (bikeId) => async (dispatch) => {
   await BikeService.deleteBike(bikeId);
-  dispatch(listBikes(shopId));
+  dispatch(listBikes());
 }
 export const getBikeById = (bikeId) => async (dispatch) => {
   const bike = await BikeService.getBikeById(bikeId);
-  console.log(bike)
   dispatch(getBike(bike));
 }
 
