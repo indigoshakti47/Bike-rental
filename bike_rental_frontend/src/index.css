@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.rdtPicker .rdtTimeToggle{
+  visibility: visible !important;
+}
+.rdtDays tr .rdtDay {
+  padding: 8px;
+}
+.rdtCounters {
+  display: flex !important;
+}

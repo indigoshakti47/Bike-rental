@@ -8,6 +8,10 @@ import helmet from "helmet";
 import authRoutes from "./routes/auth.routes.js";
 import usersRoutes from "./routes/users.routes.js";
 import bikesRoutes from "./routes/bike.routes.js";
+import reservationRoutes from "./routes/reservation.routes.js";
+import ratingRoutes from "./routes/rating.routes.js";
+
+
 
   import { createRoles } from "./libs/initialSetup.js";
 const app = express();
@@ -38,5 +42,7 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/user", usersRoutes);
 app.use("/api/bike", bikesRoutes);
+app.use("/api/reservation", reservationRoutes);
+app.use("/api/rating", ratingRoutes);
 
 export default app;

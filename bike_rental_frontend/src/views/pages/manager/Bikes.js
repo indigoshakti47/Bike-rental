@@ -40,7 +40,6 @@ const Bikes = () => {
   }
 
   const submitBike = async (bikeData) => {
-    console.log(bikeData)
     if (editingBike) {
       await dispatch(updateBike(editingBike._id, bikeData));
       alert('The Bike was edited successfully! ');

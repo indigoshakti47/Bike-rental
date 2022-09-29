@@ -42,7 +42,6 @@ function Register() {
         roles: [formData.roles],
       }))
     } catch (error) {
-      console.log(error)
       alert('Something went wrong! Please try again', 'error');
     }
   };

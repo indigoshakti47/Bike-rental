@@ -15,10 +15,6 @@ const bikeSchema = new Schema(
       type: String,
       required: true
     },
-    rating: {
-      type: Number,
-      required: true
-    },
     status: {
       type: String,
       required: true
@@ -28,6 +24,7 @@ const bikeSchema = new Schema(
       data: Buffer,
       contentType: String
     }
+
   },
   {
     timestamps: true,

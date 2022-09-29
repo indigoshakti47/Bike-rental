@@ -2,8 +2,9 @@ import React from "react";
 import formatRelative from "date-fns/formatRelative";
 import StatusItem from "./StatusItem";
 import { Card, CardHeader } from "reactstrap";
+import Rating from "./Rating";
 
-export default function bikeCard({ bike }) {
+export default function bikeCard({ bike, changeRating }) {
   return (
     <Card className="h-100">
       <CardHeader className="d-flex justify-content-between align-items-center">
@@ -21,7 +22,11 @@ export default function bikeCard({ bike }) {
             {formatRelative(new Date(bike.createdAt), new Date())}
           </small>
         </div>
-        <StatusItem status={bike.status} orderId={bike._id} />
+        <div className="align-items-end flex-column d-flex ">
+          <Rating changeRating={changeRating} bike={bike._id} />
+          <StatusItem status={bike.status} orderId={bike._id} />
+        </div>
+
       </CardHeader>
     </Card>
   );

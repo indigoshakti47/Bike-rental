@@ -32,7 +32,6 @@ export const createUser = async (req, res) => {
         const userSaved = await newUser.save();
         res.status(201).json(userSaved);
     } catch (error) {
-        console.log(error);
         return res.status(500).json(error);
     }
 };
@@ -56,10 +55,8 @@ export const updateUserById = async (req, res) => {
             },
 
         );
-        console.log('updatedusersupdatedusersupdatedusersupdatedusersupdatedusersupdatedusersupdatedusersupdatedusersupdatedusersupdatedusersupdatedusersupdatedusers')
         res.status(200).json(updatedusers);
     } catch (error) {
-        console.log(error)
         res.status(500).json(error);
     }
 };

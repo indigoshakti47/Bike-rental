@@ -8,8 +8,7 @@ const base = {
     model: '',
     color: '',
     location: '',
-    rating: 0,
-    status: true
+    status: ''
 };
 
 export default function FormModal({ isOpen, onClose, onConfirm, editValues }) {
@@ -33,6 +32,20 @@ export default function FormModal({ isOpen, onClose, onConfirm, editValues }) {
             [e.target.name]: e.target.value,
         });
     };
+    const CheckhandleChange = (e) => {
+        if (e.target.checked) {
+            setFormValues({
+                ...formValues,
+                [e.target.name]: 'true',
+            });
+        } else {
+            setFormValues({
+                ...formValues,
+                [e.target.name]: 'false',
+            });
+        }
+
+    }
 
     return (
         <Modal isOpen={isOpen}>
@@ -69,29 +82,16 @@ export default function FormModal({ isOpen, onClose, onConfirm, editValues }) {
                             required
                         />
                     </InputGroup>
-                    <InputGroup icon="ni ni-satisfied">
-                        <Input
-                            max='5'
-                            min="0"
-                            type="number"
-                            name="rating"
-                            placeholder="Rating"
-                            value={formValues.rating}
-                            onChange={handleChange}
-                            required
-                        />
-                    </InputGroup>
-                    <FormGroup check>
+                    <FormGroup >
                         <Input
                             type="checkbox"
                             name="status"
+                            value='true'
                             placeholder="Status"
-                            value={formValues.status}
-                            onChange={handleChange}
+                            checked={formValues.status === 'true'}
+                            onChange={CheckhandleChange}
                         />
                         <Label
-                            check
-
                             for="exampleCheckbox"
                         >
                             availability

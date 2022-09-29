@@ -1,4 +1,6 @@
 import BikeService from '../services/BikeService';
+import {getRating} from './rating';
+
 
 export const SET_BIKES = 'SET_BIKES';
 export const SHOW_BIKE = 'SHOW_BIKE';
@@ -15,8 +17,8 @@ const getBike = (data) => ({
 });
 
 
-export const listBikes = () => async (dispatch) => {
-  const bikes = await BikeService.getBikes();
+export const listBikes = (params) => async (dispatch) => {
+  const bikes = await BikeService.getBikes(params);
   dispatch(setBikes(bikes));
 }
 
@@ -39,3 +41,9 @@ export const getBikeById = (bikeId) => async (dispatch) => {
   dispatch(getBike(bike));
 }
 
+
+export const addRating = (bikeId, params) => async (dispatch) => {
+  console.log(params)
+  await BikeService.rating(bikeId, params);
+  dispatch(getRating(bikeId));
+}

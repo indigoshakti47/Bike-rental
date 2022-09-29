@@ -3,6 +3,8 @@ import Login from "./views/pages/Login.js";
 import BikeDetail from "./views/pages/manager/BikeDetail";
 import Bikes from "./views/pages/manager/Bikes";
 import Users from "./views/pages/manager/Users";
+import userBikes from "./views/pages/user/Bikes";
+
 
 
 
@@ -25,7 +27,6 @@ export const AuthRoutes = [
 ];
 
 export const manager = [
- 
   {
     path: '/bikes',
     name: 'Bikes',
@@ -47,7 +48,12 @@ export const manager = [
 ];
 
 export const client = [
-
+  {
+    path: '/bikes',
+    name: 'Bikes',
+    icon: 'fas fa-motorcycle',
+    component: userBikes,
+  },
   {
     path: '/bike/:bikeId',
     name: 'Bike Details',

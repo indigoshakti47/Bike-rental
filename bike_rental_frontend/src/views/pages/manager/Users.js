@@ -39,9 +39,6 @@ const Users = () => {
   }
 
   const submitUser = async (UserData) => {
-    console.log(UserData)
-    console.log('UserData')
-
     if (editingUser) {
       await dispatch(updateUser(editingUser._id, UserData));
       alert('The User was edited successfully! ');

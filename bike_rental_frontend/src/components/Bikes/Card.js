@@ -4,10 +4,8 @@ import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
 
 import { Card as Ca, Button } from "reactstrap";
-
-export default function Card({ bike, onDelete, onEdit }) {
+export default function Card({ bike, onDelete, onEdit, onReserve }) {
   const role = useSelector(state => state.auth.role);
-console.log(bike)
   return (
     <Ca className="p-4 w-100 d-flex d-flex-column justify-content-between h-100">
       <div className="d-flex align-items-center">
@@ -18,12 +16,15 @@ console.log(bike)
       <div className="d-flex justify-content-ceter">
         <Link className="btn btn-success" to={`bike/${bike._id}`}>Bike</Link>
         {
-          role === 'manager' && (
+          role === 'manager' ?
             <>
               <Button color="primary" onClick={() => onEdit(bike)}>Edit</Button>
               <Button color="danger" onClick={() => onDelete(bike._id)}>Delete</Button>
             </>
-          )
+            :
+            <>
+              <Button color="primary" onClick={() => onReserve(bike._id)}>Reserve</Button>
+            </>
         }
       </div>
     </Ca>
