@@ -25,6 +25,7 @@ export const createReservation = async (req, res) => {
 };
 export const index = async (req, res) => {
   const { bikeId } = req.params
+  console.log(req.query)
   try {
     let reservations = []
     const foundRoles = await Role.findById(req.user.roles[0]);
@@ -44,16 +45,14 @@ export const index = async (req, res) => {
 
 export const updateStatus = async (req, res) => {
   const { status } = req.body;
-  const { orderId } = req.params;
+  const { reservationId } = req.params;
 
-  req.order.statusLog.set(status, new Date().toISOString())
 
   const newReservation = {
-    status,
-    statusLog: req.order.statusLog
+    status
   };
 
-  const updatedReservation = await Reservation.findByIdAndUpdate(orderId, newReservation)
+  const updatedReservation = await Reservation.findByIdAndUpdate(reservationId, newReservation)
 
   return res.status(200).json(updatedReservation);
 }

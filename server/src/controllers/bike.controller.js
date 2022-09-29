@@ -52,23 +52,7 @@ export const getBikeById = async (req, res) => {
   try {
     const { bikeId } = req.params;
     const bike = await Bike.findById(bikeId)
-    const rating = await Rating.aggregate([
-      { $match: { bike: bike._id } },
-      {
-        $group: {
-          _id: "avg",
-          avgrating: {
-            $avg: "$rating"
-          }
-        }
-      }
-    ])
-    if (rating.length) {
-      const margeRatingavg = await { ...bike._doc, ...rating[0] }
-      res.status(200).json(margeRatingavg);
-    } else {
-      res.status(200).json(bike);
-    }
+    res.status(200).json(bike);
   } catch (error) {
     res.status(500).json(error);
   }

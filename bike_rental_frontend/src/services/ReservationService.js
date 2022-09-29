@@ -2,10 +2,8 @@ import { post, get, patch, del } from '../api';
 
 class ReservationService {
     static async index(bikeId, params) {
-        const config = {
-            data: params
-        };
-        const { data } = await get(`/reservation/${bikeId}`, config);
+        const { data } = await get(`/reservation/${bikeId}?`+ Object.entries(params).map(e => e.join('=')).join('&'));
+
         return data;
     }
     static async create(bikeId, params) {

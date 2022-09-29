@@ -3,7 +3,7 @@ import formatRelative from "date-fns/formatRelative";
 import classNames from "classnames";
 import { Button } from "reactstrap";
 
-export default function bikeCard({ reservation, border }) {
+export default function Card({ reservation, border, reservationsCancel }) {
     return (
         <div
             className={classNames(
@@ -29,8 +29,8 @@ export default function bikeCard({ reservation, border }) {
                 </span>
                 <span>$ {reservation.totalAmount}</span>
             </div>
-            {reservation.status === 'available' ?
-                <Button>Cancel</Button>
+            {reservation.status === 'confirm' ?
+                <Button onClick={() => {if(reservationsCancel) reservationsCancel(reservation)}}>Cancel</Button>
                 :
                 <span className="pr-2">Canceled</span>
             }
