@@ -30,7 +30,7 @@ export default function BikeDetail() {
     await dispatch(addRating(bike._id, {rating: e}))
   }
   const reservationsCancel = async(reservation) => {
-    await dispatch(update(bike._id, reservation._id, {status: 'cancel'}))
+    await dispatch(update(reservation._id, {bike: bikeId, status: 'cancel'}))
   }
   return (
     <CardContainer title='Manage your Bike'>
