@@ -1,4 +1,6 @@
 import UserService from '../services/UserService';
+import ReservationService from '../services/ReservationService';
+
 export const SET_USERS = 'SET_USERS';
 
 const setUsers = (data) => ({
@@ -25,4 +27,10 @@ export const updateUser = (UserId, editUser) => async (dispatch) => {
 export const deleteUser = (UserId) => async (dispatch) => {
   await UserService.deleteUser(UserId);
   dispatch(listUsers());
+}
+
+
+export const reservationsByUsers = () => async (dispatch) => {
+  const users = await ReservationService.byusers()
+  dispatch(setUsers(users));
 }

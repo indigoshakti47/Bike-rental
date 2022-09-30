@@ -1,12 +1,14 @@
 import Register from "./views/pages/Register.js";
 import Login from "./views/pages/Login.js";
-import BikeDetail from "./views/pages/manager/BikeDetail";
+// manager routes
 import Bikes from "./views/pages/manager/Bikes";
 import Users from "./views/pages/manager/Users";
+import Reservations from "./views/pages/manager/Reservations";
+
+// users routes 
 import userBikes from "./views/pages/user/Bikes";
-
-
-
+// both
+import BikeDetail from "./views/pages/manager/BikeDetail";
 
 
 export const AuthRoutes = [
@@ -43,6 +45,18 @@ export const manager = [
     name: 'Users',
     icon: 'fas fa-users',
     component: Users,
+  },
+  {
+    path: '/reservations',
+    name: 'Users Reservations',
+    icon: 'fa-brands fa-sellsy',
+    component: Reservations,
+  },
+  {
+    path: '/reservations',
+    name: 'Reserved Bikes',
+    icon: 'fa-solid fa-boxes-packing ',
+    component: Reservations,
   },
   
 ];

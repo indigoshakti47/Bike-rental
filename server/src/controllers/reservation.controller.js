@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import Reservation from "../models/Reservation.js";
 import Role from "../models/Role.js";
+import User from "../models/User.js";
 
 
 export const createReservation = async (req, res) => {
@@ -55,4 +56,26 @@ export const updateStatus = async (req, res) => {
   const updatedReservation = await Reservation.findByIdAndUpdate(reservationId, newReservation)
 
   return res.status(200).json(updatedReservation);
+}
+
+
+export const byUsers = async (req, res) => {
+  try {
+    const reservations = await User.aggregate([
+      { $lookup: { from: 'reservations', localField: "_id", foreignField: "user", as: "reservations" } },
+      { $unwind: "$reservations" },
+      { $lookup: { from: "bikes", localField: "reservations.bike", foreignField: "_id", as: "reservations.bike" } },
+      { $unwind: "$reservations.bike" },
+      {
+        $group: {
+          _id: "$_id", "name" : { "$first": "$name" }, "createdAt" : { "$first": "$createdAt" }, "email" : { "$first": "$email" }, "reservations": { "$push": "$reservations"}
+        }
+      }
+ 
+    ])
+    res.status(201).json(reservations);
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json(error);
+  }
 }
