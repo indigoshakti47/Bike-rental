@@ -43,4 +43,6 @@ export const getBikeById = (bikeId) => async (dispatch) => {
 
 export const addRating = (bikeId, params) => async (dispatch) => {
   await BikeService.rating(bikeId, params);
+  dispatch(getBikeById(bikeId));
+
 }
