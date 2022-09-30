@@ -59,7 +59,7 @@ export const getBikeById = async (req, res) => {
       { $match: { _id: new mongoose.Types.ObjectId(bikeId) } },
       { $lookup: { from: 'ratings', localField: "_id", foreignField: "bike", as: "ratings" } },
       { $unwind: { path: "$ratings", preserveNullAndEmptyArrays: true } },
-      { $group: { _id: '$_id', rating: { $avg: "$ratings.rating" }, "model": { "$first": "$model" }, "color": { "$first": "$color" }, "location": { "$first": "$location" }, "status": { "$first": "$status" }, "imgURL": { "$first": "$imgURL" }, "createdAt": { "$first": "$createdAt" },  } }
+      { $group: { _id: '$_id', rating: { $avg: "$ratings.rating" }, "model": { "$first": "$model" }, "color": { "$first": "$color" }, "location": { "$first": "$location" }, "status": { "$first": "$status" }, "imgURL": { "$first": "$imgURL" }, "createdAt": { "$first": "$createdAt" } } }
     ])
     res.status(200).json(bike[0]);
   } catch (error) {

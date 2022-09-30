@@ -1,5 +1,5 @@
 import BikeService from '../services/BikeService';
-
+import ReservationService from '../services/ReservationService';
 
 export const SET_BIKES = 'SET_BIKES';
 export const SHOW_BIKE = 'SHOW_BIKE';
@@ -45,4 +45,9 @@ export const addRating = (bikeId, params) => async (dispatch) => {
   await BikeService.rating(bikeId, params);
   dispatch(getBikeById(bikeId));
 
+}
+
+export const reservedBikes = () => async (dispatch) => {
+  const bikes = await ReservationService.reservedBikes()
+  dispatch(setBikes(bikes));
 }

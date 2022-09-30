@@ -4,6 +4,8 @@ import Login from "./views/pages/Login.js";
 import Bikes from "./views/pages/manager/Bikes";
 import Users from "./views/pages/manager/Users";
 import Reservations from "./views/pages/manager/Reservations";
+import ReservedBikes from "./views/pages/manager/ReservedBikes";
+
 
 // users routes 
 import userBikes from "./views/pages/user/Bikes";
@@ -53,10 +55,10 @@ export const manager = [
     component: Reservations,
   },
   {
-    path: '/reservations',
+    path: '/reserved/bikes',
     name: 'Reserved Bikes',
     icon: 'fa-solid fa-boxes-packing ',
-    component: Reservations,
+    component: ReservedBikes,
   },
   
 ];

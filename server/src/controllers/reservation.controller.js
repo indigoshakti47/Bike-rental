@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import Reservation from "../models/Reservation.js";
 import Role from "../models/Role.js";
 import User from "../models/User.js";
+import Bike from "../models/Bike.js";
+
 
 
 export const createReservation = async (req, res) => {
@@ -75,7 +77,27 @@ export const byUsers = async (req, res) => {
     ])
     res.status(201).json(reservations);
   } catch (error) {
-    console.log(error)
     return res.status(500).json(error);
   }
 }
+
+export const reservedBikes = async (req, res) => {
+  try {
+    const reservations = await Bike.aggregate([
+      { $lookup: { from: 'reservations', localField: "_id", foreignField: "bike", as: "reservations" } },
+      { $unwind: "$reservations" },
+      { $lookup: { from: "users", localField: "reservations.user", foreignField: "_id", as: "reservations.user" } },
+      { $unwind: "$reservations.user" },
+      {
+        $group: {
+          _id: "$_id",  "model": { "$first": "$model" }, "color": { "$first": "$color" }, "location": { "$first": "$location" }, "status": { "$first": "$status" }, "imgURL": { "$first": "$imgURL" }, "createdAt": { "$first": "$createdAt" }, "reservations": { "$push": "$reservations"}
+        }
+      }
+ 
+    ])
+    res.status(201).json(reservations);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+}
+

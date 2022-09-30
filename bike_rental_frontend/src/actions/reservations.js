@@ -12,7 +12,6 @@ const getReservation = (data) => ({
 
 
 export const listReservations = (bikeId, params) => async (dispatch) => {
-  // console.log(params)
     const reservations = await ReservationService.index(bikeId, params || {});
     dispatch(getReservation(reservations));
   }

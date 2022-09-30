@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import {
-    reservationsByUsers
-} from '../../../actions/users';
+    reservedBikes
+} from '../../../actions/bikes';
 import { Row, CardLink } from "reactstrap";
 import EmptyState from "../../../components/SharedComponents/EmptyState";
 import CardContainer from "../../../components/SharedComponents/CardContainer";
-import UserList from "../../../components/Reservations/UserList";
-import UsersReservationsList from '../../../components/Reservations/UsersReservationsList';
+import BikeList from "../../../components/Reservations/BikeList";
+import BikesReservationsList from '../../../components/Reservations/BikesReservationsList';
 
-const Reservations = () => {
+const ReservedBikes = () => {
     const [show, setShow] = useState(false)
     const [reservations, setReservations] = useState([])
     const dispatch = useDispatch();
-    const { users } = useSelector((state) => state.users);
+    const { bikes } = useSelector((state) => state.bikes);
+
     const load = () => {
-        dispatch(reservationsByUsers());
+        dispatch(reservedBikes());
     }
     useEffect(load, [dispatch]);
     const showBooking = (reservations) => {
@@ -26,20 +27,19 @@ const Reservations = () => {
     const setshow = () => {
         setShow(!show)
     }
-
     return (
-        <CardContainer title={'Users Reservations'} >
+        <CardContainer title={'Reserved bikes'} >
             {show ?
                 <>
                     <CardLink onClick={setshow}><i class="fa-solid fa-arrow-left"></i> Back</CardLink>
-                    <UsersReservationsList reservations={reservations} onlyShow={true} />
+                    <BikesReservationsList reservations={reservations} onlyShow={true} />
                 </>
 
                 :
                 <Row>
-                    {!!users?.length ?
-                        <UserList users={users} showBooking={showBooking} /> :
-                        <EmptyState item="user" onActionClick={load} />
+                    {!!bikes?.length ?
+                        <BikeList bikes={bikes} showBooking={showBooking} /> :
+                        <EmptyState item="bike" onActionClick={load} />
                     }
                 </Row>
             }
@@ -48,4 +48,4 @@ const Reservations = () => {
     );
 };
 
-export default Reservations;
+export default ReservedBikes;

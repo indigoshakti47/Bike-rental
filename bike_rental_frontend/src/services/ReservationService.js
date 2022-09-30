@@ -29,6 +29,11 @@ class ReservationService {
         const { data } = await get(`/reservation/users/all`);
         return data;
     }
+
+    static async reservedBikes() {
+        const { data } = await get(`/reservation/bikes/all`);
+        return data;
+    }
 }
 
 export default ReservationService;

@@ -5,7 +5,6 @@ import { Card, CardHeader } from "reactstrap";
 import Rating from "./Rating";
 
 export default function bikeCard({ bike, changeRating }) {
-  console.log(bike)
   return (
     <Card className="h-100">
       <CardHeader className="d-flex justify-content-between align-items-center">

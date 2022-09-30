@@ -3,8 +3,8 @@ import formatRelative from "date-fns/formatRelative";
 import classNames from "classnames";
 import { Button } from "reactstrap";
 
-export default function ReservationsBike({ reservation, border }) {
-    const bike = reservation.bike
+export default function ReservationsUser({ reservation, border }) {
+    const user = reservation.user
     return (
         <div
             className={classNames(
@@ -14,19 +14,16 @@ export default function ReservationsBike({ reservation, border }) {
         >
             <div>
                 <h4 className="d-flex align-items-center">
-                    Bike
+                    User
                 </h4>
-                <span className="d-flex align-items-center">
-                    Model: {bike.model}
+                <span className="d-flex pl-3 align-items-center">
+                    Name: {user.name}
                 </span>
-                <span className="d-flex align-items-center">
-                    Color: {bike.color}
+                <span className="d-flex pl-3 align-items-center">
+                    Email: {user.email}
                 </span>
-                <span className="d-flex align-items-center">
-                    Location: {bike.location}
-                </span>
-                <small className="text-capitalize">
-                    {formatRelative(new Date(bike.createdAt), new Date())}
+                <small className="pl-3 pb-2 text-capitalize">
+                    {formatRelative(new Date(user.createdAt), new Date())}
                 </small>
             </div>
             <div>
