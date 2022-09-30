@@ -22,7 +22,7 @@ export default function UserCard({ user, showBooking }) {
                         </small>
                         <div className="d-flex justify-content-end">
                             <>
-                                <Button color="primary" onClick={() => showBooking(user, user.reservations)}>View Bookings</Button>
+                                <Button color="primary" onClick={() => showBooking(user.reservations)}>View Bookings</Button>
                             </>
                         </div>
                     </Card>

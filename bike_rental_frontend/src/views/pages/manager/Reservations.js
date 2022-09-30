@@ -1,37 +1,41 @@
 import React, { useEffect, useState } from "react";
-
 import { useDispatch, useSelector } from 'react-redux';
 import {
     reservationsByUsers
 } from '../../../actions/users';
-import { useAlert } from "../../../hooks/useAlert";
-import { Row } from "reactstrap";
-
+import { Row, CardLink } from "reactstrap";
 import EmptyState from "../../../components/SharedComponents/EmptyState";
 import CardContainer from "../../../components/SharedComponents/CardContainer";
 import UserList from "../../../components/Reservations/UserList";
 import UsersReservationsList from '../../../components/Reservations/UsersReservationsList';
 
 const Reservations = () => {
-    const [ show, setShow ] = useState(false)
-    const [ reservations, setReservations ] = useState([])
-    const [ user, setUser ] = useState({})
+    const [show, setShow] = useState(false)
+    const [reservations, setReservations] = useState([])
     const dispatch = useDispatch();
     const { users } = useSelector((state) => state.users);
     const load = () => {
         dispatch(reservationsByUsers());
     }
     useEffect(load, [dispatch]);
-    const showBooking = (user , reservations) => {
-        setShow(true)
-        setUser(user)
+    const showBooking = (reservations) => {
+        setshow()
         console.log(reservations)
         setReservations(reservations)
     }
+
+    const setshow = () => {
+        setShow(!show)
+    }
+
     return (
         <CardContainer title={'Users Reservations'} >
             {show ?
-                <UsersReservationsList reservations={reservations} onlyShow={true}/>
+                <>
+                    <CardLink onClick={setshow}><i class="fa-solid fa-arrow-left"></i> Back</CardLink>
+                    <UsersReservationsList reservations={reservations} onlyShow={true} />
+                </>
+
                 :
                 <Row>
                     {!!users?.length ?
