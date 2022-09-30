@@ -25,7 +25,10 @@ export const getBikes = async (req, res) => {
   if (req.query.bike && !mongoose.Types.ObjectId.isValid(req.query.bike)) {
     res.status(400).json({ message: "Invalid manager Id" });
   }
+  console.log(req.query)
   const bikes = await Bike.aggregate([
+    { $match: req.query || {} },
+
     { $lookup: { from: 'ratings', localField: "_id", foreignField: "bike", as: "ratings" } },
     { $unwind: { path: "$ratings", preserveNullAndEmptyArrays: true } },
     { $group: { _id: '$_id', rating: { $avg: "$ratings.rating" }, "model": { "$first": "$model" }, "color": { "$first": "$color" }, "location": { "$first": "$location" }, "status": { "$first": "$status" }, "imgURL": { "$first": "$imgURL" } } }
