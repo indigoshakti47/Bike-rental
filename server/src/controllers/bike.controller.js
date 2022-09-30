@@ -25,7 +25,11 @@ export const getBikes = async (req, res) => {
   if (req.query.bike && !mongoose.Types.ObjectId.isValid(req.query.bike)) {
     res.status(400).json({ message: "Invalid manager Id" });
   }
-  const bikes = await Bike.find(req.query || {});
+  const bikes = await Bike.aggregate([
+    { $lookup: { from: 'ratings', localField: "_id", foreignField: "bike", as: "ratings" } },
+    { $unwind: { path: "$ratings", preserveNullAndEmptyArrays: true } },
+    { $group: { _id: '$_id', rating: { $avg: "$ratings.rating" }, "model": { "$first": "$model" }, "color": { "$first": "$color" }, "location": { "$first": "$location" }, "status": { "$first": "$status" }, "imgURL": { "$first": "$imgURL" } } }
+  ])
   return res.json(bikes);
 };
 
@@ -51,8 +55,13 @@ export const updateBikeById = async (req, res) => {
 export const getBikeById = async (req, res) => {
   try {
     const { bikeId } = req.params;
-    const bike = await Bike.findById(bikeId)
-    res.status(200).json(bike);
+    const bike = await Bike.aggregate([
+      { $match: { _id: new mongoose.Types.ObjectId(bikeId) } },
+      { $lookup: { from: 'ratings', localField: "_id", foreignField: "bike", as: "ratings" } },
+      { $unwind: { path: "$ratings", preserveNullAndEmptyArrays: true } },
+      { $group: { _id: '$_id', rating: { $avg: "$ratings.rating" }, "model": { "$first": "$model" }, "color": { "$first": "$color" }, "location": { "$first": "$location" }, "status": { "$first": "$status" }, "imgURL": { "$first": "$imgURL" }, "createdAt": { "$first": "$createdAt" },  } }
+    ])
+    res.status(200).json(bike[0]);
   } catch (error) {
     res.status(500).json(error);
   }

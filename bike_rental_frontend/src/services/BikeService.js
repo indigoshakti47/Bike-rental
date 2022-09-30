@@ -42,10 +42,6 @@ class BikeService {
     const { data } = await post(`/rating/${bikeId}`, config);
     return data;
   }
-  static async getrating(bikeId) {
-    const { data } = await get(`/rating/${bikeId}`);
-    return data;
-  }
 }
 
 export default BikeService;

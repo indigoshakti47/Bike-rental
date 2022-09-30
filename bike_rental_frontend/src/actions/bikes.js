@@ -1,5 +1,4 @@
 import BikeService from '../services/BikeService';
-import {getRating} from './rating';
 
 
 export const SET_BIKES = 'SET_BIKES';
@@ -44,5 +43,4 @@ export const getBikeById = (bikeId) => async (dispatch) => {
 
 export const addRating = (bikeId, params) => async (dispatch) => {
   await BikeService.rating(bikeId, params);
-  dispatch(getRating(bikeId));
 }

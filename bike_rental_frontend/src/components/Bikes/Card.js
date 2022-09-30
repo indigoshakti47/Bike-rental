@@ -2,8 +2,9 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
-
 import { Card as Ca, Button } from "reactstrap";
+import Rating from "./Rating";
+
 export default function Card({ bike, onDelete, onEdit, onReserve }) {
   const role = useSelector(state => state.auth.role);
   return (
@@ -13,6 +14,7 @@ export default function Card({ bike, onDelete, onEdit, onReserve }) {
         <h2 className="pl-3 pt-2">{bike.model}</h2>
       </div>
       <p className="pt-2">{bike.location}</p>
+      <Rating rating={bike.rating}/>
       <div className="d-flex justify-content-ceter">
         <Link className="btn btn-success" to={`bike/${bike._id}`}>Bike</Link>
         {

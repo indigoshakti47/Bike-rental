@@ -5,6 +5,7 @@ import { Card, CardHeader } from "reactstrap";
 import Rating from "./Rating";
 
 export default function bikeCard({ bike, changeRating }) {
+  console.log(bike)
   return (
     <Card className="h-100">
       <CardHeader className="d-flex justify-content-between align-items-center">
@@ -23,7 +24,7 @@ export default function bikeCard({ bike, changeRating }) {
           </small>
         </div>
         <div className="align-items-end flex-column d-flex ">
-          <Rating changeRating={changeRating} bike={bike._id} />
+          <Rating changeRating={changeRating} rating={bike.rating} />
           <StatusItem status={bike.status} orderId={bike._id} />
         </div>
 

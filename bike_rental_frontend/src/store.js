@@ -17,8 +17,8 @@ const initialState = {
   bikes: [],
   alerts: {},
   users: [],
-  reservations: [],
-  rating: {}
+  reservations: []
+ 
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
