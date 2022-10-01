@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
-import { Modal, ModalHeader, ModalBody, ModalFooter, Form, Input, Button, FormGroup, Label } from "reactstrap";
-
+import { Modal, ModalHeader, ModalBody, ModalFooter, Form, Input, Button } from "reactstrap";
 import InputGroup from "../InputGroup";
 
 const base = {

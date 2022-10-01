@@ -1,23 +1,18 @@
 import React, { useState, useEffect } from 'react'
 
 import {
-    Modal, ModalHeader, ModalBody, ModalFooter, Form, Input, Button, FormGroup, Label,
-    InputGroupAddon,
-    InputGroupText,
-    Col,
-    Row
+    Modal, ModalHeader, ModalBody, ModalFooter, Form, Input, Button, FormGroup,
+    InputGroupAddon, InputGroupText, Col, Row
 } from "reactstrap";
 import ReactDatetime from "react-datetime";
 
 import InputGroup from "../InputGroup";
-import moment from 'moment'
 
 const base = {
     totalAmount: '',
     startDate: '',
     endDate: '',
     status: ''
-    // enum: ['available', 'reserved'],
 };
 
 export default function FormModal({ isOpen, onClose, onConfirm, editValues }) {

@@ -12,7 +12,7 @@ import {
   Media,
 } from "reactstrap";
 
-const AdminNavbar = (props) => {
+const AdminNavbar = () => {
 
   const dispatch = useDispatch();
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Card, CardFooter, CardBody } from "reactstrap";
+import { CardFooter, CardBody } from "reactstrap";
 import ReservationsBike from './ReservationsBike';
 
 export default function List({ reservations = [] }) {

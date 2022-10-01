@@ -1,7 +1,6 @@
 import React from "react";
 import formatRelative from "date-fns/formatRelative";
 import classNames from "classnames";
-import { Button } from "reactstrap";
 
 export default function ReservationsUser({ reservation, border }) {
     const user = reservation.user
