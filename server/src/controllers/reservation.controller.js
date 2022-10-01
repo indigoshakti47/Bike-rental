@@ -28,7 +28,6 @@ export const createReservation = async (req, res) => {
 };
 export const index = async (req, res) => {
   const { bikeId } = req.params
-  console.log(req.query)
   try {
     let reservations = []
     const foundRoles = await Role.findById(req.user.roles[0]);

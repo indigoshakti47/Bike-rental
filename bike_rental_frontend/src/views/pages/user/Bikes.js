@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import {listBikes} from '../../../actions/bikes';
-import {create} from '../../../actions/reservations';
+import { listBikes } from '../../../actions/bikes';
+import { create } from '../../../actions/reservations';
 import { useAlert } from "../../../hooks/useAlert";
-import { Container, Row, Form, Col, Label, Input } from "reactstrap";
+import { Container, Row } from "reactstrap";
 import Header from "../../../components/Header.js";
 import EmptyState from "../../../components/SharedComponents/EmptyState";
 import BikeList from "../../../components/Bikes/List";
 import BikeFormReserveModal from "../../../components/Bikes/BikeFormReserveModal";
-
+import Filter from "../../../components/Bikes/Filter";
 const Bikes = () => {
     const [bike, setBike] = useState({});
     const [open, setOpen] = useState(false);
@@ -20,7 +20,7 @@ const Bikes = () => {
         dispatch(listBikes({ status: 'true' }));
     }, [dispatch]);
 
-    const handleReserve = async(formData) => {
+    const handleReserve = async (formData) => {
         if (bike) {
             await dispatch(create(bike, formData));
             alert('The Reservation was created successfully!');
@@ -31,31 +31,14 @@ const Bikes = () => {
         setBike(bike)
         setOpen(!open);
     };
+    const hendleFilter = (data) => {
+        dispatch(listBikes({...data, ...{ status: 'true' } } ));
+    };
     return (
         <>
-            {
-                <Header>
-                    <Form>
-                        <Row className="row-cols-lg-auto g-3 align-items-center">
-                            <Col>
-                                <Label
-                                    className="visually-hidden"
-                                    for="exampleEmail"
-                                >
-                                    Email
-                                </Label>
-                                <Input
-                                    id="exampleEmail"
-                                    name="email"
-                                    placeholder="something@idk.cool"
-                                    type="email"
-                                />
-                            </Col>
-                        </Row>
-                    </Form>
-                </Header>
-
-            }
+            <Header>
+                <Filter search={hendleFilter} />
+            </Header>
             <Container className="mt--7" fluid>
                 <Row>
                     {

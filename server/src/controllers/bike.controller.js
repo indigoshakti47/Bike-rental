@@ -25,14 +25,27 @@ export const getBikes = async (req, res) => {
   if (req.query.bike && !mongoose.Types.ObjectId.isValid(req.query.bike)) {
     res.status(400).json({ message: "Invalid manager Id" });
   }
+  let bikes = []
   console.log(req.query)
-  const bikes = await Bike.aggregate([
-    { $match: req.query || {} },
+  if (req.query.rating) {
+    bikes = await Bike.aggregate([
+      { $lookup: { from: 'ratings', localField: "_id", foreignField: "bike", as: "ratings" } },
+      { $unwind: { path: "$ratings" } },
+      { $match: { $expr: { $gt: [{ $avg: '$ratings.rating' }, Number(req.query.rating)] }, status: req.query.status } },
+      { $group: { _id: '$_id', rating: { $avg: "$ratings.rating" }, "model": { "$first": "$model" }, "color": { "$first": "$color" }, "location": { "$first": "$location" }, "status": { "$first": "$status" }, "imgURL": { "$first": "$imgURL" } } }
 
-    { $lookup: { from: 'ratings', localField: "_id", foreignField: "bike", as: "ratings" } },
-    { $unwind: { path: "$ratings", preserveNullAndEmptyArrays: true } },
-    { $group: { _id: '$_id', rating: { $avg: "$ratings.rating" }, "model": { "$first": "$model" }, "color": { "$first": "$color" }, "location": { "$first": "$location" }, "status": { "$first": "$status" }, "imgURL": { "$first": "$imgURL" } } }
-  ])
+    ])
+    console.log(bikes)
+  } else {
+
+    bikes = await Bike.aggregate([
+      { $match: req.query || {} },
+      { $lookup: { from: 'ratings', localField: "_id", foreignField: "bike", as: "ratings" } },
+      { $unwind: { path: "$ratings", preserveNullAndEmptyArrays: true } },
+      { $group: { _id: '$_id', rating: { $avg: "$ratings.rating" }, "model": { "$first": "$model" }, "color": { "$first": "$color" }, "location": { "$first": "$location" }, "status": { "$first": "$status" }, "imgURL": { "$first": "$imgURL" } } }
+    ])
+  }
+
   return res.json(bikes);
 };
 
