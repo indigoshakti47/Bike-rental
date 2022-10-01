@@ -23,17 +23,18 @@ export const listBikes = (params) => async (dispatch) => {
 
 export const createBike = (newBike) => async (dispatch) => {
   await BikeService.createBike(newBike);
-  dispatch(listBikes());
+  dispatch(listBikes({ status: "true" }));
 }
 
 export const updateBike = (bikeId, updatedBike) => async (dispatch) => {
   await BikeService.updateBike(bikeId, updatedBike);
-  dispatch(listBikes());
+  dispatch(listBikes({ status: "true" }));
+
 }
 
 export const deleteBike = (bikeId) => async (dispatch) => {
   await BikeService.deleteBike(bikeId);
-  dispatch(listBikes());
+  dispatch(listBikes({ status: "true" }));
 }
 export const getBikeById = (bikeId) => async (dispatch) => {
   const bike = await BikeService.getBikeById(bikeId);

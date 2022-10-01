@@ -27,7 +27,7 @@ const Bikes = () => {
   const alert = useAlert();
 
   useEffect(() => {
-    dispatch(listBikes());
+    dispatch(listBikes({ status: "true" }));
   }, [dispatch]);
 
   const handleFormModalClose = () => {
@@ -64,6 +64,9 @@ const Bikes = () => {
   const handleEdit = (bike) => {
     setEditingBike(bike);
   };
+  const changeStatus=(data)=>{
+    dispatch(listBikes(data));
+  }
 
   return (
     <>
@@ -76,7 +79,7 @@ const Bikes = () => {
         <Row>
           {
             !!bikes?.length ?
-              <BikeList bikes={bikes} onEdit={handleEdit} onDelete={handleDelete} /> :
+              <BikeList bikes={bikes} onEdit={handleEdit} onDelete={handleDelete} changeStatus={changeStatus} role='manager'/> :
               <EmptyState item="bike" onActionClick={handleFormModalOpen} />
           }
         </Row>
