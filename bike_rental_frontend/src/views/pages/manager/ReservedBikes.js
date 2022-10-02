@@ -39,7 +39,7 @@ const ReservedBikes = () => {
                 <Row>
                     {!!bikes?.length ?
                         <BikeList bikes={bikes} showBooking={showBooking} /> :
-                        <EmptyState item="bike" onActionClick={load} />
+                        <EmptyState item="bike" />
                     }
                 </Row>
             }

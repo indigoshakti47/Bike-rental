@@ -39,7 +39,7 @@ const Reservations = () => {
                 <Row>
                     {!!users?.length ?
                         <UserList users={users} showBooking={showBooking} /> :
-                        <EmptyState item="user" onActionClick={load} />
+                        <EmptyState item="user" />
                     }
                 </Row>
             }

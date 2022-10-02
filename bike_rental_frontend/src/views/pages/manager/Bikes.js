@@ -80,7 +80,7 @@ const Bikes = () => {
           {
             !!bikes?.length ?
               <BikeList bikes={bikes} onEdit={handleEdit} onDelete={handleDelete} changeStatus={changeStatus} role='manager'/> :
-              <EmptyState item="bike" onActionClick={handleFormModalOpen} />
+              <EmptyState item="bike"  />
           }
         </Row>
       </Container>

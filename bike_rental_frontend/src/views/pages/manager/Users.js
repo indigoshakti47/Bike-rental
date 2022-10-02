@@ -76,7 +76,7 @@ const Users = () => {
           {
             !!users?.length ?
               <UserList users={users} onEdit={handleEdit} onDelete={handleDelete} /> :
-              <EmptyState item="user" onActionClick={handleFormModalOpen} />
+              <EmptyState item="user"  />
           }
         </Row>
       </Container>

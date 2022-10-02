@@ -20,8 +20,9 @@ export const createReservation = async (req, res) => {
         placed: new Date().toISOString(),
       },
     });
-    const orderSaved = await newReservation.save();
-    res.status(201).json(orderSaved);
+    
+    const reservationSaved = await newReservation.save();
+    res.status(201).json(reservationSaved);
   } catch (error) {
     return res.status(500).json(error);
   }

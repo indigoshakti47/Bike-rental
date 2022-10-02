@@ -3,7 +3,7 @@ import Bike from "../models/Bike.js";
 import Reservation from "../models/Reservation.js";
 
 
-export const isValidOrder = async (req, res, next) => {
+export const isValidReservation = async (req, res, next) => {
   try {
     const { bikeId } = req.params;
     if (!bikeId) {
@@ -60,29 +60,3 @@ export const isBikeAvailable = async (req, res, next) => {
   }
     
 }
-
-
-export const statusGuard = async (req, res, next) => {
-  try {
-    const { isRestaurant, isUser, _id: userId, restaurants } = req.user;
-    const { status } = req.body;
-    const { orderId } = req.params;
-
-
-    switch (status) {
-      case "reserved":
-        if (isUser && order.status === "reserved") return next();
-        break;
-      case "available":
-        if (isRestaurant && order.status === "available") return next();
-        break;
-    }
-
-    return res.status(400).json({ message: "Invalid status change" });
-  } catch (error) {
-    if (error.kind === 'ObjectId') {
-      return res.status(404).json({ message: "Order not found." });
-    }
-    res.status(500).json(error);
-  }
-};
